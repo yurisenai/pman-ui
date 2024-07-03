@@ -1,6 +1,6 @@
 <article>
-    <h2>{{department.departmentName }}</h2>
-    <h4>{{department.departmentId}}</h4>
+    <h2>{{department.id}} {{department.name }}</h2>
+    <h4>{{department.location}}</h4>
     <h5>Employees:</h5>
     <ul>
         @for (employee of department.employees; track $index){
@@ -8,5 +8,6 @@
         }
     </ul>
 
+    <button (click)="sendFavoriteDepartment()">Favorite</button>
     <button (click)="deleteThisDepartment()">Delete</button>
 </article>

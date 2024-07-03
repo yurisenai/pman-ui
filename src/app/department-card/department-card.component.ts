@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Department } from '../models/department';
+import { DataPassService } from '../services/data-pass.service';
 
 @Component({
   selector: 'app-department-card',
@@ -10,14 +11,20 @@ import { Department } from '../models/department';
 })
 export class DepartmentCardComponent {
 
-  @Input() department: Department = new Department(0,'',[])
+  constructor(private dataPassService: DataPassService){}
+
+  @Input() department: Department = new Department(0,'','',[])
 
   @Output() deleteDepartmentEvent = new EventEmitter<number>();
 
   deleteThisDepartment(){
-    console.log(this.department.departmentId)
-    this.deleteDepartmentEvent.emit(this.department.departmentId);
+    console.log(this.department.id)
+    this.deleteDepartmentEvent.emit(this.department.id);
 
+  }
+
+  sendFavoriteDepartment(){
+    this.dataPassService.updateFavoriteDepartment(this.department);
   }
 
 }

@@ -29,15 +29,18 @@ export class DepartmentsComponent {
 
         let body: any = response.body || {}
         for (let item of body) {
-          this.departments.push(new Department(item.id, item.name, item.employees));
+          this.departments.push(new Department(item.id, item.name, item.location, item.employees));
           
         }
       }
     });
   }
 
-  getDepartmentById(){
-    this.httpService.getDepartmentById();
+  getDepartmentById(id:number){
+    this.httpService.getDepartmentById(id).subscribe(data=>{
+      this.departments = [];
+      console.log("Successful Get Department: "+ id)
+    });
   }
 
   createDepartment(){
@@ -50,8 +53,8 @@ export class DepartmentsComponent {
     this.httpService.updateDepartment();
   }
 
-  deleteDepartment(departmentId:number){
-    this.httpService.deleteDepartment(departmentId).subscribe(data=>{
+  deleteDepartment(id:number){
+    this.httpService.deleteDepartment(id).subscribe(data=>{
       this.getAllDepartments();
     });
   }

@@ -1,1 +1,6 @@
 <p>employees works!</p>
+@for (employee of employees; track $index){
+    <app-employee-card [employee]="employee"
+                        (deleteEmployeeEvent)="processDeleteEvent($event)"
+                        ></app-employee-card>
+}

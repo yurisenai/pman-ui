@@ -10,13 +10,14 @@ export class HttpService {
   
   url: String = 'http://localhost:8080/'
 
+
+  //DEPARTMENTS
   getAllDepartments(){
-    console.log("test");
     return this.http.get(this.url + 'departments', { observe : 'response'});
   }
 
-  getDepartmentById(){
-    return this.http.get(this.url + 'departments/' + 30, {observe:'response'})
+  getDepartmentById(id:number){
+    return this.http.get(this.url + 'departments/' + id, {observe:'response'})
   }
 
   createDepartment(){
@@ -31,8 +32,36 @@ parameters.set('id','25')
     return this.http.put(this.url + 'departments', {employees: []}, {observe:'response',params:parameters})
   }
 
-  deleteDepartment(departmentId:number){
-    return this.http.delete(this.url + 'departments/' + departmentId,
+  deleteDepartment(id:number){
+    return this.http.delete(this.url + 'departments/' + id,
+                             {observe:'response'})
+  }
+
+
+
+  //EMPLOYEES
+  getAllEmployees(){
+    return this.http.get(this.url + 'employees', { observe : 'response'});
+  }
+
+  getEmployeeById(id:number){
+    return this.http.get(this.url + 'employees/' + id, {observe:'response'})
+  }
+
+  createEmployee(){
+    return this.http.post(this.url + 'employees', {}, {observe:'response'})
+  }
+
+  updateEmployee(){
+let parameters = new HttpParams();
+parameters.set('id','25')
+          .set('name','Test Put Department')
+
+    return this.http.put(this.url + 'employees', {employees: []}, {observe:'response',params:parameters})
+  }
+
+  deleteEmployee(id:number){
+    return this.http.delete(this.url + 'employees/' + id,
                              {observe:'response'})
   }
 }

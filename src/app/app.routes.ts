@@ -16,4 +16,20 @@ export const routes: Routes = [
         path:'departments',
         component: DepartmentsComponent
     },
+    {
+        path:'employees',
+        component: EmployeesComponent
+    },
+    {
+        path:'jobs',
+        component: JobsComponent
+    },
+    {
+        path:'settings',
+        component: SettingsComponent
+    },
+    {
+        path:'projects',
+        component: ProjectsComponent
+    },
 ];

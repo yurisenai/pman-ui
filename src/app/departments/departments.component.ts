@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { HttpService } from '../services/http.service';
 import { CommonModule } from '@angular/common';
 import { Department } from '../models/department';
-import { DepartmentCardComponent } from '../department-card/department-card.component';
+import { DepartmentCardComponent } from './department-card/department-card.component';
 
 
 @Component({

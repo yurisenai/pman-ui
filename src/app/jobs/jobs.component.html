@@ -1,1 +1,7 @@
-<p>jobs works!</p>
+<div class="card-container">
+    @for (job of jobs; track $index){
+        <app-job-card [job]="job"
+                            (deleteJobEvent)="processDeleteEvent($event)"
+                            ></app-job-card>
+    }
+</div>

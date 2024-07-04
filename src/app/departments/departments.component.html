@@ -1,16 +1,7 @@
-<p>departments wwworks!</p>
-
-<div>
-    <h2>CRUD Buttons</h2>
-
-    <!--<button (click)="createDepartment()">Create</button>
-    <button (click)="getDepartmentById()">Get By ID</button>
-    <button (click)="updateDepartment()">Update</button>
-    <button (click)="deleteDepartment()">Delete</button>-->
+<div class="card-container">
+    @for (department of departments; track $index){
+        <app-department-card [department]="department"
+                            (deleteDepartmentEvent)="processDeleteEvent($event)"
+                            ></app-department-card>
+    } 
 </div>
-
-@for (department of departments; track $index){
-    <app-department-card [department]="department"
-                        (deleteDepartmentEvent)="processDeleteEvent($event)"
-                        ></app-department-card>
-}

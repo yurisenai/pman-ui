@@ -64,4 +64,61 @@ parameters.set('id','25')
     return this.http.delete(this.url + 'employees/' + id,
                              {observe:'response'})
   }
+
+
+
+
+    //JOBS
+  getAllJobs(){
+    return this.http.get(this.url + 'jobs', { observe : 'response'});
+  }
+
+  getJobById(id:number){
+    return this.http.get(this.url + 'jobs/' + id, {observe:'response'})
+  }
+
+  createJob(){
+    return this.http.post(this.url + 'jobs', {}, {observe:'response'})
+  }
+
+  updateJob(){
+  let parameters = new HttpParams();
+  parameters.set('id','25')
+          .set('name','Test Put Department')
+
+    return this.http.put(this.url + 'jobs', {employees: []}, {observe:'response',params:parameters})
+  }
+
+  deleteJob(id:number){
+    return this.http.delete(this.url + 'jobs/' + id,
+                            {observe:'response'})
+  }
+
+
+
+  //PROJECTS
+  getAllProjects(){
+    return this.http.get(this.url + 'projects', { observe : 'response'});
+  }
+
+  getProjectById(id:number){
+    return this.http.get(this.url + 'projects/' + id, {observe:'response'})
+  }
+
+  createProject(){
+    return this.http.post(this.url + 'projects', {}, {observe:'response'})
+  }
+
+  updateProject(){
+  let parameters = new HttpParams();
+  parameters.set('id','25')
+          .set('name','Test Put projects')
+
+    return this.http.put(this.url + 'projects', {employees: []}, {observe:'response',params:parameters})
+  }
+
+  deleteProject(id:number){
+    return this.http.delete(this.url + 'projects/' + id,
+                            {observe:'response'})
+  }
 }

@@ -1,1 +1,7 @@
-<p>projects works!</p>
+<div class="card-container">
+    @for (project of projects; track $index){
+        <app-project-card [project]="project"
+                            (deleteProjectEvent)="processDeleteEvent($event)"
+                            ></app-project-card>
+    }
+</div>

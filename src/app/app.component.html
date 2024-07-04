@@ -1,5 +1,15 @@
-<app-header></app-header>
 
-<router-outlet />
+<div id = "top-container">
 
-<app-footer></app-footer>
+    <app-header id = "header" ></app-header>
+
+    <app-sidebar id = "sidebar"></app-sidebar>
+
+    <div id = "main" >
+        <router-outlet />
+    </div>
+    
+
+    <app-footer id = "footer"></app-footer>
+
+</div>

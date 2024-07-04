@@ -1,0 +1,13 @@
+
+<article>
+    <h2>{{employee.id}} {{employee.firstName}} {{employee.lastName}}</h2>
+    <h4>{{employee.email}}</h4>
+    <h4>{{employee.phoneNumber}}</h4>
+    <h4>{{employee.job}}</h4>
+    <h4>{{employee.department}}</h4>
+    <!--<h4>Manager: {{employee.manager}}</h4>-->
+    <h4>Salary: {{employee.salary}}</h4>
+    <h4>Currently Working On: {{employee.projects}}</h4>
+
+    <button (click)="deleteThisEmployee()">Delete</button>
+</article>

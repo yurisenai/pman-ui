@@ -1,0 +1,12 @@
+<article>
+    <h2>{{job.id}} {{job.title }}</h2>
+    <h4>{{job.minSalary + '-' +job.maxSalary}}</h4>
+    <h5>Employees:</h5>
+    <ul>
+        @for (employee of job.employees; track $index){
+            <li>{{employee.firstName + " " + employee.lastName}}</li>
+        }
+    </ul>
+
+    <button (click)="deleteThisJob()">Delete</button>
+</article>

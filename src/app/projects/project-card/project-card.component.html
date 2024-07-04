@@ -1,0 +1,13 @@
+<article>
+    <h2>{{project.id}} {{project.name }}</h2>
+    <h4>{{project.description}}</h4>
+    <h5>Department: {{project.department[1]}}</h5>
+    <h5>Employees:</h5>
+    <ul>
+        @for (employee of project.employees; track $index){
+            <li>{{employee.firstName + " " + employee.lastName}}</li>
+        }
+    </ul>
+
+    <button (click)="deleteThisProject()">Delete</button>
+</article>

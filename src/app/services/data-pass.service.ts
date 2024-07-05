@@ -9,7 +9,7 @@ export class DataPassService {
 
   constructor() { }
 
-  favoriteDepartment: Department = new Department(0,'','',[]);
+  favoriteDepartment: Department = new Department(0,'','',[],[]);
 
   faveDeptSubject = new BehaviorSubject<Department>(this.favoriteDepartment);
 

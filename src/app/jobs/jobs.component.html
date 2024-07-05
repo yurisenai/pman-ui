@@ -1,3 +1,19 @@
+<article id="table-header">
+    <div class="row-content">
+        <p>TITLE</p>
+    </div>
+    <div class="row-content">
+        <p>SALARY RANGE</p>
+    </div>
+    <div class="row-content">
+        <p>PERSONNEL</p>
+    </div>
+    
+    <div id="table-header">
+        <i class="fas fa-plus" ></i>
+    </div>
+</article>
+
 <div class="card-container">
     @for (job of jobs; track $index){
         <app-job-card [job]="job"

@@ -1,5 +1,5 @@
 nav{
-    background-color: #575fcf;
+    background-color: #9799e0;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -7,12 +7,12 @@ nav{
 }
 
 nav a {
-    padding: 10px 20px;
+    padding: 15px 20px;
     margin: 0;
     color: #fff;
     text-decoration: none;
     text-align: center;
-    background-color: #575fcf;
+    background-color: #9799e0;
     border: none;
     transition: all 0.3s ease;
     width: 100%; 
@@ -24,4 +24,8 @@ nav a:hover {
     background-color: #4b4db7;
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+img{
+    width: 100%;
 }

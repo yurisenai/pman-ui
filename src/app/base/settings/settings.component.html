@@ -1,1 +1,52 @@
-<p>settings works!</p>
+
+<div class="settings-container">
+    <h1>Settings</h1>
+    
+    <section class="settings-section">
+      <h2>Appearance</h2>
+      <div class="settings-item">
+        <label for="dark-mode-toggle">Dark Mode</label>
+        <label class="switch">
+          <input type="checkbox" id="dark-mode-toggle" [(ngModel)]="isDarkMode" (change)="toggleDarkMode()">
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </section>
+  
+    <section class="settings-section">
+      <h2>User Information</h2>
+      <div class="settings-item">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter your username" disabled>
+      </div>
+      <div class="settings-item">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" disabled>
+      </div>
+    </section>
+  
+    <section class="settings-section">
+      <h2>Notification Preferences</h2>
+      <div class="settings-item">
+        <label for="email-notifications">Email Notifications</label>
+        <input type="checkbox" id="email-notifications" disabled>
+      </div>
+      <div class="settings-item">
+        <label for="sms-notifications">SMS Notifications</label>
+        <input type="checkbox" id="sms-notifications" disabled>
+      </div>
+    </section>
+  
+    <section class="settings-section">
+      <h2>Privacy Settings</h2>
+      <div class="settings-item">
+        <label for="public-profile">Public Profile</label>
+        <input type="checkbox" id="public-profile" disabled>
+      </div>
+      <div class="settings-item">
+        <label for="data-sharing">Data Sharing</label>
+        <input type="checkbox" id="data-sharing" disabled>
+      </div>
+    </section>
+  </div>
+  

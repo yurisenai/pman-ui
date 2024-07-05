@@ -1,7 +1,29 @@
-<div class="card-container">
+<article id="table-header">
+    <div class="row-content">
+        <p>NAME</p>
+    </div>
+    <div class="row-content">
+        <p>EMAIL</p>
+    </div>
+    <div class="row-content">
+        <p>PHONE</p>
+    </div>
+    <div class="row-content">
+        <p>JOB</p>
+    </div>
+    <div class="row-content">
+        <p>DEPARTMENT</p>
+    </div>      
+    
+    <div id="table-header">
+        <i class="fas fa-plus"  (click)="createEmployee()"></i>
+    </div>
+</article>
+
+<div class="card-container">    
     @for (employee of employees; track $index){
         <app-employee-card [employee]="employee"
-                            (deleteEmployeeEvent)="processDeleteEvent($event)"
-                            ></app-employee-card>
+        (updateEmployeeEvent)="updateEmployee($event)"  
+        (deleteEmployeeEvent)="processDeleteEvent($event)"></app-employee-card>
     }
 </div>

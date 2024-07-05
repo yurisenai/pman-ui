@@ -16,7 +16,9 @@ import { DepartmentCardComponent } from './department-card/department-card.compo
 
 export class DepartmentsComponent {
 
+  selectedDepartment: Department | null = null;
   departments: Department[] = [];
+  
 
   constructor(private httpService: HttpService){
     this.getAllDepartments();
@@ -29,7 +31,7 @@ export class DepartmentsComponent {
 
         let body: any = response.body || {}
         for (let item of body) {
-          this.departments.push(new Department(item.id, item.name, item.location, item.employees));
+          this.departments.push(new Department(item.id, item.name, item.location, item.employees,item.projects));
           
         }
       }
@@ -49,8 +51,17 @@ export class DepartmentsComponent {
     });
   }
 
-  updateDepartment(){
-    this.httpService.updateDepartment();
+  
+
+  updateDepartment(department: Department) {
+    this.httpService.updateDepartment(
+      department.id,
+      department.name,
+      department.location,
+      department.employees
+    ).subscribe(response => {
+      this.getAllDepartments();
+    });
   }
 
   deleteDepartment(id:number){

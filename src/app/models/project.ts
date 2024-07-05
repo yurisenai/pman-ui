@@ -1,3 +1,5 @@
+import { Department } from "./department";
+
 export class Project {
 
     id: number;
@@ -5,13 +7,13 @@ export class Project {
     description: String;
     startDate: String;
     endDate: String;
-    department:any[];
+    department:Department;
     employees:any[];
     
 
     constructor(id: number, name: string, description: string,
         startDate: string, endDate: string, employees: any[],
-        department: any[]){
+        department: Department){
         this.id = id;
         this.name = name;
         this.description = description;

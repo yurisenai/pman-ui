@@ -1,13 +1,90 @@
 
-<article>
-    <h2>{{employee.id}} {{employee.firstName}} {{employee.lastName}}</h2>
-    <h4>{{employee.email}}</h4>
-    <h4>{{employee.phoneNumber}}</h4>
-    <h4>{{employee.job}}</h4>
-    <h4>{{employee.department}}</h4>
-    <!--<h4>Manager: {{employee.manager}}</h4>-->
-    <h4>Salary: {{employee.salary}}</h4>
-    <h4>Currently Working On: {{employee.projects}}</h4>
+@if(!editVisible){
+    <article>
 
-    <button (click)="deleteThisEmployee()">Delete</button>
-</article>
+        <div class="row-content">
+            <p>{{employee.id}} {{employee.firstName}} {{employee.lastName}}</p>
+        </div>
+        <div class="row-content">
+            <p>{{employee.email}}</p>
+        </div>
+        <div class="row-content">
+            <p>{{employee.phoneNumber}}</p>
+        </div>
+        <div class="row-content">
+            <p>{{employee.job.title}}</p>
+        </div>
+        <div class="row-content">
+            <p>{{employee.department.name}}</p>
+        </div>
+        
+        
+        
+        
+    
+        <div class="action-icons">
+            <div class="blue">
+                <i class="fas fa-eye" (click)="viewThisEmployee()"></i>
+            </div>
+            <div class="red">
+                <i class="fas fa-trash" (click)="deleteThisEmployee()"></i>
+            </div>
+        
+        </div>
+    </article>
+}
+
+
+@if(editVisible){
+    <article>
+        <form>
+            <div class="row-content">
+                <p>{{employee.id+" "}}</p>
+                <input type="text" [placeholder]="employee.firstName" name="holderFirstName"
+                [(ngModel)]="holderFirstName" class="editable-input">
+                <input type="text" [placeholder]="employee.lastName" name="holderLastName"
+                [(ngModel)]="holderLastName" class="editable-input">
+            </div>
+            <div class="row-content">
+                <input type="text" [placeholder]="employee.email" name="holderEmail"
+                [(ngModel)]="holderEmail" class="editable-input">
+            </div>
+            <div class="row-content">
+                <input type="text" [placeholder]="employee.phoneNumber" name="holderPhoneNumber"
+                [(ngModel)]="holderPhoneNumber" class="editable-input">
+            </div>
+            <div class="row-content">
+                <label for="holderJob">Job ID: </label>
+                <input type="text" [placeholder]="employee.job.id" name="holderJob"
+                [(ngModel)]="holderJob" class="editable-input">
+            </div>
+            <div class="row-content">
+                <label for="holderDept">Deptartment ID: </label>
+                <input type="text" [placeholder]="employee.department.id" name="holderDept"
+                [(ngModel)]="holderDept" class="editable-input">
+            </div>
+            <div class="row-content">
+                <label for="holderSalary">Salary: </label>
+                <input type="text" [placeholder]="employee.salary" name="holderSalary"
+                [(ngModel)]="holderSalary" class="editable-input">
+            </div>
+        </form>
+        
+        
+        
+        
+    
+        <div class="action-icons">
+            <div class="green">
+                <i class="fas fa-check" (click)="updateEmployee()"></i>
+            </div>
+            <div class="blue">
+                <i class="fas fa-eye" (click)="viewThisEmployee()"></i>
+            </div>
+            <div class="red">
+                <i class="fas fa-trash" (click)="deleteThisEmployee()"></i>
+            </div>
+        
+        </div>
+    </article>
+}

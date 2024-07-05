@@ -1,7 +1,24 @@
+
+<article id="table-header">
+    <div class="row-content">
+        <p>DEPARTMENTS</p>
+    </div>
+    <div class="row-content">
+        <p>PROJECTS</p>
+    </div>
+    <div class="row-content">
+        <p>PERSONNEL</p>
+    </div>
+    
+    <div id="table-header">
+        <i class="fas fa-plus" (click)="createDepartment()"></i>
+    </div>
+</article>
+
 <div class="card-container">
     @for (department of departments; track $index){
         <app-department-card [department]="department"
-                            (deleteDepartmentEvent)="processDeleteEvent($event)"
-                            ></app-department-card>
+        (updateDepartmentEvent)="updateDepartment($event)"  
+        (deleteDepartmentEvent)="processDeleteEvent($event)"></app-department-card>
     } 
 </div>

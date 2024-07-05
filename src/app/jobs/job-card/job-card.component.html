@@ -1,12 +1,35 @@
 <article>
-    <h2>{{job.id}} {{job.title }}</h2>
-    <h4>{{job.minSalary + '-' +job.maxSalary}}</h4>
-    <h5>Employees:</h5>
-    <ul>
-        @for (employee of job.employees; track $index){
-            <li>{{employee.firstName + " " + employee.lastName}}</li>
-        }
-    </ul>
+    <div class="row-content">
+        <p>{{job.id}} {{job.title }}</p>
+    </div>
+    <div class="row-content">
+        <p>{{job.minSalary + '-' +job.maxSalary}}</p>
+    </div>
+    <div class="row-content">
+        <ul>
+            @if (job.employees.length > 1 ){
+                <li>{{ job.employees.length }} Employees</li>
+            }
+            @if (job.employees.length == 1 ){
+                <li>{{ job.employees.length }} Employee</li>
+            }
+            @if (job.employees.length < 1 ){
+                <li>{{ job.employees.length }} No Workers!</li>
+            }
+            
+        </ul>
+    </div>
+    
+    
+    
+    
 
-    <button (click)="deleteThisJob()">Delete</button>
+    <div class="action-icons">
+        <div class="blue">
+            <i class="fas fa-eye" ></i>
+        </div>
+        <div class="red">
+            <i class="fas fa-trash" (click)="deleteThisJob()"></i>
+        </div>
+    </div>
 </article>

@@ -29,7 +29,7 @@ export class EmployeesComponent {
         for (let item of body) {
           this.employees.push(new Employee(item.id, item.firstName,
              item.lastName,item.email, item.phoneNumber,item.job,
-             item.department, item.manager, item.salary, item.projects));
+             item.department, item.salary, item.projects));
           
         }
       }
@@ -49,8 +49,19 @@ export class EmployeesComponent {
     });
   }
 
-  updateEmployee(){
-    this.httpService.updateEmployee();
+  updateEmployee(employee:Employee){
+    this.httpService.updateEmployee(
+      employee.id,
+      employee.firstName,
+      employee.lastName,
+      employee.email,
+      employee.phoneNumber,
+      employee.job.id,
+      employee.department.id,
+      employee.salary,
+      employee.projects.id).subscribe(response => {
+      this.getAllEmployees();
+    });
   }
 
   deleteEmployee(id:number){

@@ -1,2 +1,47 @@
-
-<h2>Pick Up Where You Left Off</h2>
+<!-- home.component.html -->
+<div class="home-container">
+    <h1>Progress Report</h1>
+  
+    <div class="cards">
+      <div class="card">
+        <h2>Employees</h2>
+        <p>{{ employeeCount }}</p>
+        <div class="progress-bar">
+          <div class="progress" [style.width.%]="employeeProgress"></div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Departments</h2>
+        <p>{{ departmentCount }}</p>
+        <div class="progress-bar">
+          <div class="progress" [style.width.%]="departmentProgress"></div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Projects</h2>
+        <p>{{ projectCount }}</p>
+        <div class="progress-bar">
+          <div class="progress" [style.width.%]="projectProgress"></div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="tasks">
+      <h2>Tasks</h2>
+      <ol>
+        <li>Review Quarterly Financial Reports: Analyze financial performance, budget adherence, and forecast adjustments.</li>
+        <li>Conduct Team Performance Reviews: Schedule and conduct one-on-one meetings with team members to discuss their performance and set goals.</li>
+        <li>Strategic Planning Meeting: Organize and lead a meeting to discuss the company's strategic direction and upcoming projects.</li>
+        <li>Client Presentation Preparation: Prepare materials and rehearse for an upcoming presentation to a key client or stakeholder.</li>
+        <li>Oversee Project Milestones: Check in on the progress of major projects, ensuring they are on track and addressing any roadblocks.</li>
+        <li>Approve Budget Requests: Review and approve budget requests from various departments.</li>
+        <li>Staff Training and Development: Plan and schedule training sessions to enhance team skills and productivity.</li>
+        <li>Employee Recruitment: Review job applications, conduct interviews, and make hiring decisions.</li>
+        <li>Market Research Analysis: Analyze market trends and competitor activities to inform business strategies.</li>
+        <li>Policy and Procedure Review: Update company policies and procedures to ensure compliance with legal requirements and industry standards.</li>
+      </ol>
+    </div>
+  </div>
+  
+  
+  

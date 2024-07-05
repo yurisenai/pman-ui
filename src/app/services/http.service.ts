@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { switchMap } from 'rxjs';
+import { Department } from '../models/department';
+import { Employee } from '../models/employee';
+import { Job } from '../models/job';
+import { Project } from '../models/project';
+
 
 @Injectable({
   providedIn: 'root'
@@ -20,16 +26,32 @@ export class HttpService {
     return this.http.get(this.url + 'departments/' + id, {observe:'response'})
   }
 
-  createDepartment(){
-    return this.http.post(this.url + 'departments', {}, {observe:'response'})
+  createDepartment() {
+    return this.http.get(this.url + 'departments', { observe: 'response' }).pipe(
+      switchMap(response => {
+        const departments = response.body as any[];
+        let highestId = 0;
+        departments.forEach(dept => {
+          if (dept.id > highestId) {
+            highestId = dept.id;
+          }
+        });
+        const newDepartment = {
+          id: highestId + 1,
+          name: "Name",
+          location: "Location",
+          employees: [],
+          projects: []
+        };
+        return this.http.post(this.url + 'departments', newDepartment, { observe: 'response' });
+      })
+    );
   }
 
-  updateDepartment(){
-let parameters = new HttpParams();
-parameters.set('id','25')
-          .set('name','Test Put Department')
+  updateDepartment(id: number, name: string, location: string, employees: any[]){
 
-    return this.http.put(this.url + 'departments', {employees: []}, {observe:'response',params:parameters})
+    return this.http.put(this.url + 'departments/'+ id,
+       new Department(id, name, location, employees, []) , { observe: 'response' });
   }
 
   deleteDepartment(id:number){
@@ -48,16 +70,38 @@ parameters.set('id','25')
     return this.http.get(this.url + 'employees/' + id, {observe:'response'})
   }
 
-  createEmployee(){
-    return this.http.post(this.url + 'employees', {}, {observe:'response'})
+  createEmployee() {
+    return this.http.get(this.url + 'employees', { observe: 'response' }).pipe(
+      switchMap(response => {
+        const employees = response.body as any[];
+        let highestId = 0;
+        employees.forEach(emp => {
+          if (emp.id > highestId) {
+            highestId = emp.id;
+          }
+        });
+        const newEmployee = {
+          id: highestId + 1,
+          firstName: "First Name",
+          lastName: "Last Name",
+          email:"Email",
+          phoneNumber:"Phone Number",
+          salary:0,
+          department: [],
+          job: [],
+          projects: []
+        };
+        return this.http.post(this.url + 'employees', newEmployee, { observe: 'response' });
+      })
+    );
   }
 
-  updateEmployee(){
-let parameters = new HttpParams();
-parameters.set('id','25')
-          .set('name','Test Put Department')
-
-    return this.http.put(this.url + 'employees', {employees: []}, {observe:'response',params:parameters})
+  updateEmployee(id: number, firstName: string, lastName: string, email:string, phoneNumber:string,jobId:number,
+                  deptId: number, salary:number, projId:number) {
+    return this.http.put(this.url + 'employees/' + id,
+      new Employee(id, firstName, lastName,email,phoneNumber,
+        new Job(jobId,'',0,0,[]), new Department(deptId,'','',[],[]), salary,
+         new Project(projId,'','','','',[],new Department(0,'','',[],[]))), { observe: 'response' });
   }
 
   deleteEmployee(id:number){

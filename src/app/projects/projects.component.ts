@@ -48,8 +48,17 @@ export class ProjectsComponent {
     });
   }
 
-  updateProject(){
-    this.httpService.updateProject();
+  updateProject(project:Project){
+    this.httpService.updateProject(
+      project.id,
+      project.name,
+      project.description,
+      project.startDate,
+      project.endDate,
+      project.department.id,
+      project.employees).subscribe(response => {
+      this.getAllProjects();
+    });
   }
 
   deleteProject(id:number){

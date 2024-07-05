@@ -48,8 +48,16 @@ export class JobsComponent {
     });
   }
 
-  updateJob(){
-    this.httpService.updateJob();
+  updateJob(job:Job){
+    this.httpService.updateJob(
+      job.id,
+      job.title,
+      job.minSalary,
+      job.maxSalary,
+      job.employees
+    ).subscribe(response => {
+      this.getAllJobs();
+    });
   }
 
   deleteJob(id:number){

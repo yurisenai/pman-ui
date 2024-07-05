@@ -121,16 +121,31 @@ export class HttpService {
     return this.http.get(this.url + 'jobs/' + id, {observe:'response'})
   }
 
-  createJob(){
-    return this.http.post(this.url + 'jobs', {}, {observe:'response'})
+  createJob() {
+    return this.http.get(this.url + 'jobs', { observe: 'response' }).pipe(
+      switchMap(response => {
+        const jobs = response.body as any[];
+        let highestId = 0;
+        jobs.forEach(job => {
+          if (job.id > highestId) {
+            highestId = job.id;
+          }
+        });
+        const newJob = {
+          id: highestId + 1,
+          title: "New",
+          minSalary: 0,
+          maxSalary: 0,
+          employees: []
+        };
+        return this.http.post(this.url + 'jobs', newJob, { observe: 'response' });
+      })
+    );
   }
 
-  updateJob(){
-  let parameters = new HttpParams();
-  parameters.set('id','25')
-          .set('name','Test Put Department')
-
-    return this.http.put(this.url + 'jobs', {employees: []}, {observe:'response',params:parameters})
+  updateJob(id: number, title: string, minSalary: number, maxSalary: number, employees: any[]) {
+    return this.http.put(this.url + 'jobs/' + id,
+      new Job(id, title, minSalary, maxSalary, employees), { observe: 'response' });
   }
 
   deleteJob(id:number){
@@ -149,16 +164,31 @@ export class HttpService {
     return this.http.get(this.url + 'projects/' + id, {observe:'response'})
   }
 
-  createProject(){
-    return this.http.post(this.url + 'projects', {}, {observe:'response'})
+  createProject() {
+    return this.http.get(this.url + 'projects', { observe: 'response' }).pipe(
+      switchMap(response => {
+        const projects = response.body as any[];
+        let highestId = 0;
+        projects.forEach(project => {
+          if (project.id > highestId) {
+            highestId = project.id;
+          }
+        });
+        const newProject = {
+          id: highestId + 1,
+          name: "New Project",
+          description: "New Project Description",
+          department: null,
+          employees: []
+        };
+        return this.http.post(this.url + 'projects', newProject, { observe: 'response' });
+      })
+    );
   }
 
-  updateProject(){
-  let parameters = new HttpParams();
-  parameters.set('id','25')
-          .set('name','Test Put projects')
-
-    return this.http.put(this.url + 'projects', {employees: []}, {observe:'response',params:parameters})
+  updateProject(id: number, name: string, description: string, startDate: string, endDate: string, deptId:number,employees:any[]) {
+    return this.http.put(this.url + 'projects/' + id,
+      new Project(id, name, description,startDate,endDate, employees, new Department(deptId,'','',[],[])), { observe: 'response' });
   }
 
   deleteProject(id:number){

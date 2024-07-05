@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
   }
 
   calculateProgress(count: number): number {
-    const max = 100; // You can adjust this based on your needs
+    const max = 25; 
     return (count / max) * 100;
   }
 }

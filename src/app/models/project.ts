@@ -4,9 +4,9 @@ export class Project {
 
     id: number;
     name: string;
-    description: String;
-    startDate: String;
-    endDate: String;
+    description: string;
+    startDate: string;
+    endDate: string;
     department:Department;
     employees:any[];
     

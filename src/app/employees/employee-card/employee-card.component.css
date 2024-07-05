@@ -53,10 +53,36 @@ article ul {
     transition: all 0.3s ease; 
 }
 
+.green i:hover {
+    color: #1aff00;
+}
+
 .blue i:hover {
     color: #007bff;
 }
 
 .red i:hover {
     color: #ff0000;
+}
+
+.editable-input {
+    border: none;
+    border-bottom: 2px solid #ffffff; /* Subtle underline */
+    background-color: transparent;
+    font-size: 16px;
+    padding: 2px 0;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.editable-input:focus {
+    border-bottom: 2px solid #000; /* Slightly darker underline on focus */
+}
+
+.editable-input::placeholder {
+    color: #585858;
+}
+
+.editable-input:hover {
+    border-bottom: 1px solid #222222; /* Slightly darker underline on hover */
 }
